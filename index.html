@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seven Bridges Cleaning Co. — The Space, Perfected.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --obsidian:#0A0A0C;
+  --midnight:#111118;
+  --charcoal:#1C1C26;
+  --steel:#2A2A38;
+  --mist:#7A7A8E;
+  --silver:#C0C0D0;
+  --white:#F4F4F6;
+  --gold:#C9A84C;
+  --gold-dim:rgba(201,168,76,0.18);
+  --gold-line:rgba(201,168,76,0.25);
+  --teal:#2A9BA6;
+  --teal-dim:rgba(42,155,166,0.12);
+  --sky:#5B8DB8;
+  --sky-dim:rgba(91,141,184,0.12);
+  --radius:2px;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--obsidian);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── UTILITIES ── */
+.serif{font-family:'Cormorant Garamond',serif}
+.mono{font-family:'DM Mono',monospace}
+.gold{color:var(--gold)}
+.teal{color:var(--teal)}
+.mist{color:var(--mist)}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.rule{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--gold-line),transparent)}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 60px;height:72px;
+  background:rgba(10,10,12,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(201,168,76,0.08);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:18px;
+  text-decoration:none;
+}
+.nav-arch svg{width:28px;height:28px}
+.nav-wordmark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:400;
+  letter-spacing:.06em;color:var(--white);
+  line-height:1;
+}
+.nav-wordmark span{color:var(--gold)}
+.nav-wordmark small{
+  display:block;
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:.4em;
+  color:var(--mist);margin-top:3px;
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex;align-items:center;gap:36px;
+  list-style:none;
+}
+.nav-links a{
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mist);text-decoration:none;
+  transition:color .25s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  padding:10px 24px;
+  border:1px solid var(--gold);
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  transition:all .25s;
+  font-family:'DM Mono',monospace;
+}
+.nav-cta:hover{background:var(--gold);color:var(--obsidian)!important}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:140px 60px 100px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 60% 40%,rgba(201,168,76,0.05) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 60% at 15% 70%,rgba(27,107,114,0.07) 0%,transparent 55%);
+  pointer-events:none;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);
+  background-size:72px 72px;
+  pointer-events:none;
+}
+.hero-inner{max-width:900px;position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.5em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;
+  display:flex;align-items:center;gap:16px;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:40px;height:1px;
+  background:var(--gold);
+}
+.hero-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7vw,96px);
+  font-weight:300;line-height:1.06;
+  letter-spacing:.01em;
+  color:var(--white);
+  margin-bottom:16px;
+}
+.hero-headline em{color:var(--gold);font-style:italic}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.5vw,26px);
+  font-weight:300;font-style:italic;
+  color:var(--mist);margin-bottom:52px;
+  max-width:640px;line-height:1.5;
+}
+.hero-actions{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  padding:16px 40px;
+  background:var(--gold);color:var(--obsidian);
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:.25em;text-transform:uppercase;
+  text-decoration:none;font-weight:500;
+  transition:all .25s;display:inline-block;
+}
+.btn-primary:hover{background:#E2C87A}
+.btn-ghost{
+  padding:15px 40px;
+  border:1px solid rgba(201,168,76,0.35);
+  color:var(--silver);
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:.25em;text-transform:uppercase;
+  text-decoration:none;transition:all .25s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--white)}
+
+.hero-scroll{
+  position:absolute;bottom:48px;left:60px;
+  display:flex;align-items:center;gap:14px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.4em;text-transform:uppercase;color:var(--mist);
+}
+.hero-scroll-line{
+  width:40px;height:1px;
+  background:linear-gradient(to right,var(--gold),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── STATS BAND ── */
+.stats{
+  background:var(--charcoal);
+  border-top:1px solid rgba(201,168,76,0.1);
+  border-bottom:1px solid rgba(201,168,76,0.1);
+  padding:0 60px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{
+  padding:36px 40px;
+  border-right:1px solid rgba(255,255,255,0.05);
+  text-align:center;
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:600;
+  color:var(--gold);line-height:1;margin-bottom:6px;
+}
+.stat-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--mist);
+}
+
+/* ── POSITIONING STATEMENT ── */
+.position{
+  padding:120px 60px;
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:100px;
+  align-items:center;
+}
+.position-text .eyebrow{margin-bottom:24px}
+.position-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,3.5vw,48px);
+  font-weight:300;line-height:1.25;
+  color:var(--white);margin-bottom:28px;
+}
+.position-body{
+  font-size:15px;color:var(--mist);
+  line-height:1.85;margin-bottom:36px;
+  max-width:480px;
+}
+.position-values{list-style:none}
+.position-values li{
+  display:flex;align-items:baseline;gap:16px;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:13px;color:var(--silver);
+}
+.position-values li::before{
+  content:'—';color:var(--gold);font-size:11px;min-width:16px;
+}
+.position-arch{
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.arch-large svg{
+  width:320px;height:320px;
+  opacity:.9;
+}
+.arch-orbit{
+  position:absolute;
+  width:380px;height:380px;
+  border:1px solid rgba(201,168,76,0.08);
+  border-radius:50%;
+  animation:slowSpin 40s linear infinite;
+}
+@keyframes slowSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.arch-orbit-2{
+  width:460px;height:460px;
+  border:1px solid rgba(201,168,76,0.04);
+  animation-duration:60s;animation-direction:reverse;
+}
+
+/* ── SERVICES ── */
+.services{
+  background:var(--midnight);
+  padding:120px 60px;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+.services-header{
+  max-width:1200px;margin:0 auto 72px;
+  display:flex;align-items:baseline;gap:32px;
+}
+.services-header .rule{flex:1}
+.services-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:300;color:var(--white);
+  white-space:nowrap;
+}
+.services-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.service-card{
+  background:var(--charcoal);
+  border:1px solid rgba(255,255,255,0.05);
+  padding:48px 40px;
+  position:relative;overflow:hidden;
+  transition:all .35s;cursor:default;
+}
+.service-card::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:var(--gold);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s;
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:#202030}
+.service-num{
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:.3em;color:var(--gold);
+  margin-bottom:32px;opacity:.7;
+}
+.service-icon{
+  width:48px;height:48px;margin-bottom:24px;
+  opacity:.85;
+}
+.service-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:600;
+  color:var(--white);margin-bottom:16px;
+}
+.service-body{
+  font-size:13px;color:var(--mist);
+  line-height:1.8;margin-bottom:28px;
+}
+.service-list{list-style:none}
+.service-list li{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--mist);padding:6px 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  display:flex;align-items:center;gap:10px;
+}
+.service-list li::before{
+  content:'';display:block;width:4px;height:4px;
+  background:var(--gold);opacity:.6;
+  border-radius:50%;flex-shrink:0;
+}
+
+/* ── PROCESS ── */
+.process{
+  padding:120px 60px;
+  max-width:1200px;margin:0 auto;
+}
+.process-header{text-align:center;margin-bottom:80px}
+.process-header .eyebrow{margin-bottom:20px;justify-content:center;display:flex}
+.process-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,52px);
+  font-weight:300;color:var(--white);
+}
+.process-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;position:relative;
+}
+.process-steps::before{
+  content:'';position:absolute;
+  top:28px;left:10%;right:10%;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold-line),var(--gold-line),transparent);
+}
+.process-step{text-align:center;padding:0 20px;position:relative}
+.step-dot{
+  width:56px;height:56px;margin:0 auto 28px;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--obsidian);
+  font-family:'DM Mono',monospace;font-size:13px;
+  color:var(--gold);position:relative;z-index:1;
+}
+.step-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:600;
+  color:var(--white);margin-bottom:12px;
+}
+.step-body{font-size:12px;color:var(--mist);line-height:1.7}
+
+/* ── WHY SECTION ── */
+.why{
+  background:var(--charcoal);
+  border-top:1px solid rgba(255,255,255,0.04);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  padding:120px 60px;
+}
+.why-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:100px;
+  align-items:start;
+}
+.why-left .eyebrow{margin-bottom:24px}
+.why-left h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,3.5vw,48px);
+  font-weight:300;color:var(--white);
+  margin-bottom:28px;line-height:1.2;
+}
+.why-left p{font-size:14px;color:var(--mist);line-height:1.85;margin-bottom:40px}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.why-card{
+  background:var(--midnight);
+  border:1px solid rgba(255,255,255,0.05);
+  padding:28px 24px;
+}
+.why-card-icon{
+  width:36px;height:36px;margin-bottom:16px;color:var(--gold);
+}
+.why-card-title{
+  font-size:13px;font-weight:500;
+  color:var(--white);margin-bottom:8px;
+}
+.why-card-body{font-size:12px;color:var(--mist);line-height:1.7}
+
+/* ── QUOTE SECTION ── */
+.testimonial{
+  padding:120px 60px;
+  max-width:900px;margin:0 auto;
+  text-align:center;
+}
+.testimonial-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;font-weight:300;
+  color:var(--gold);line-height:.6;
+  margin-bottom:40px;opacity:.4;
+}
+.testimonial-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3vw,34px);
+  font-weight:300;font-style:italic;
+  color:var(--white);line-height:1.5;
+  margin-bottom:40px;
+}
+.testimonial-rule{
+  width:60px;height:1px;
+  background:var(--gold);margin:0 auto 24px;
+}
+.testimonial-attr{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.35em;text-transform:uppercase;color:var(--mist);
+}
+
+/* ── DIVISIONS ── */
+.divisions{
+  background:var(--midnight);
+  border-top:1px solid rgba(255,255,255,0.04);
+  padding:120px 60px;
+}
+.divisions-inner{
+  max-width:1200px;margin:0 auto;
+}
+.divisions-header{
+  text-align:center;margin-bottom:72px;
+}
+.divisions-header .eyebrow{justify-content:center;display:flex;margin-bottom:20px}
+.divisions-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,52px);
+  font-weight:300;color:var(--white);
+}
+.div-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.div-card{
+  border:1px solid rgba(255,255,255,0.06);
+  padding:60px 52px;position:relative;overflow:hidden;
+}
+.div-card.event{background:rgba(27,107,114,0.07)}
+.div-card.corp{background:rgba(44,62,107,0.07)}
+.div-accent{
+  position:absolute;top:0;left:0;right:0;height:2px;
+}
+.div-card.event .div-accent{background:var(--teal)}
+.div-card.corp .div-accent{background:var(--sky)}
+.div-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.45em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.div-card.event .div-label{color:var(--teal)}
+.div-card.corp .div-label{color:var(--sky)}
+.div-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;font-weight:400;
+  color:var(--white);margin-bottom:20px;
+}
+.div-body{font-size:13px;color:var(--mist);line-height:1.8;margin-bottom:36px}
+.div-services{list-style:none;margin-bottom:36px}
+.div-services li{
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:12px;color:var(--silver);
+  display:flex;align-items:center;gap:12px;
+}
+.div-dot{
+  width:5px;height:5px;border-radius:50%;flex-shrink:0;
+}
+.div-card.event .div-dot{background:var(--teal)}
+.div-card.corp .div-dot{background:var(--sky)}
+.div-cta{
+  display:inline-block;
+  padding:12px 28px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;transition:all .25s;
+  border:1px solid;
+}
+.div-card.event .div-cta{color:var(--teal);border-color:var(--teal)}
+.div-card.event .div-cta:hover{background:var(--teal);color:var(--obsidian)}
+.div-card.corp .div-cta{color:var(--sky);border-color:var(--sky)}
+.div-card.corp .div-cta:hover{background:var(--sky);color:var(--obsidian)}
+
+/* ── QUOTE FORM / CTA ── */
+.cta-section{
+  padding:140px 60px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(201,168,76,0.07),transparent);
+  pointer-events:none;
+}
+.cta-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.cta-eyebrow{margin-bottom:24px}
+.cta-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,64px);
+  font-weight:300;color:var(--white);
+  line-height:1.15;margin-bottom:20px;
+}
+.cta-headline em{color:var(--gold);font-style:italic}
+.cta-sub{
+  font-size:15px;color:var(--mist);
+  margin-bottom:52px;line-height:1.7;
+}
+.cta-form{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  margin-bottom:2px;
+}
+.cta-input{
+  background:var(--charcoal);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:18px 24px;
+  font-family:'DM Sans',sans-serif;font-size:14px;
+  color:var(--white);outline:none;
+  transition:border-color .25s;
+  -webkit-appearance:none;
+}
+.cta-input::placeholder{color:var(--mist);font-weight:300}
+.cta-input:focus{border-color:rgba(201,168,76,0.4)}
+.cta-select{
+  background:var(--charcoal);
+  border:1px solid rgba(255,255,255,0.07);
+  padding:18px 24px;
+  font-family:'DM Sans',sans-serif;font-size:14px;
+  color:var(--mist);outline:none;
+  -webkit-appearance:none;cursor:pointer;
+  transition:border-color .25s;
+}
+.cta-select:focus{border-color:rgba(201,168,76,0.4)}
+.cta-select option{background:var(--charcoal);color:var(--white)}
+.cta-submit{
+  grid-column:1/-1;
+  padding:20px;
+  background:var(--gold);
+  border:none;cursor:pointer;
+  font-family:'DM Mono',monospace;font-size:12px;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--obsidian);font-weight:500;
+  transition:background .25s;
+}
+.cta-submit:hover{background:#E2C87A}
+.cta-note{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--mist);margin-top:20px;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--obsidian);
+  border-top:1px solid rgba(201,168,76,0.12);
+  padding:80px 60px 48px;
+}
+.footer-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:60px;margin-bottom:72px;
+}
+.footer-brand .nav-logo{margin-bottom:20px;display:inline-flex}
+.footer-brand p{font-size:13px;color:var(--mist);line-height:1.75;max-width:280px}
+.footer-col h4{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{
+  font-size:13px;color:var(--mist);
+  text-decoration:none;transition:color .2s;
+}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{
+  max-width:1200px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:32px;border-top:1px solid rgba(255,255,255,0.05);
+  flex-wrap:wrap;gap:16px;
+}
+.footer-legal{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.2em;color:var(--mist);text-transform:uppercase;
+}
+.footer-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;font-style:italic;color:var(--mist);
+}
+
+/* ── SECTION WRAPPERS ── */
+.section-bg-alt{background:var(--midnight)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hero{padding:120px 24px 80px}
+  .stats{grid-template-columns:repeat(2,1fr);padding:0 24px}
+  .stat-item{padding:28px 20px}
+  .position{padding:80px 24px;grid-template-columns:1fr;gap:48px}
+  .position-arch{display:none}
+  .services{padding:80px 24px}
+  .services-grid{grid-template-columns:1fr}
+  .process{padding:80px 24px}
+  .process-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .process-steps::before{display:none}
+  .why{padding:80px 24px}
+  .why-inner{grid-template-columns:1fr;gap:48px}
+  .why-grid{grid-template-columns:1fr}
+  .testimonial{padding:80px 24px}
+  .divisions{padding:80px 24px}
+  .div-grid{grid-template-columns:1fr}
+  .cta-section{padding:80px 24px}
+  .cta-form{grid-template-columns:1fr}
+  footer{padding:60px 24px 40px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-arch">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 24 148 Q 100 24 176 148" fill="none" stroke="#C9A84C" stroke-width="5" stroke-linecap="round"/>
+        <line x1="24" y1="148" x2="176" y2="148" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+        <line x1="100" y1="24" x2="100" y2="148" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+        <circle cx="100" cy="24" r="4" fill="#C9A84C"/>
+        <circle cx="24" cy="148" r="4" fill="#C9A84C"/>
+        <circle cx="176" cy="148" r="4" fill="#C9A84C"/>
+      </svg>
+    </div>
+    <div class="nav-wordmark">
+      <span>Seven Bridges</span> Cleaning Co.
+      <small>Jacksonville, Florida</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#divisions">Divisions</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Jacksonville's Premier Commercial Standard</div>
+    <h1 class="hero-headline">
+      The Space,<br><em>Perfected.</em>
+    </h1>
+    <p class="hero-sub">Premium commercial cleaning for the venues, corporations, and events that demand more than ordinary.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Quote</a>
+      <a href="#services" class="btn-ghost">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num">2M+</div>
+    <div class="stat-label">Sq. Ft. Maintained Monthly</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Events Serviced</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">98%</div>
+    <div class="stat-label">Client Retention Rate</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">Emergency Response</div>
+  </div>
+</div>
+
+<!-- ══ POSITIONING ══ -->
+<section class="position" id="about">
+  <div class="position-text">
+    <div class="eyebrow">Why Seven Bridges</div>
+    <h2 class="position-headline">We don't just clean spaces.<br>We prepare them for greatness.</h2>
+    <p class="position-body">Seven Bridges Cleaning Co. is built for the commercial environments that represent your brand — stadiums, luxury offices, event venues, and corporate campuses that operate at the highest level. We bring that same level to every engagement.</p>
+    <ul class="position-values">
+      <li>Precision-trained teams for commercial-scale operations</li>
+      <li>Vetted, bonded, and fully insured across all service tiers</li>
+      <li>White-glove reporting and account management</li>
+      <li>Rapid event turnaround — we work to your timeline</li>
+      <li>Jacksonville-rooted, regionally scalable</li>
+    </ul>
+  </div>
+  <div class="position-arch">
+    <div class="arch-orbit"></div>
+    <div class="arch-orbit arch-orbit-2"></div>
+    <div class="arch-large">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 24 148 Q 100 24 176 148" fill="none" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+        <line x1="24" y1="148" x2="176" y2="148" stroke="#C9A84C" stroke-width="1.5" opacity="0.45"/>
+        <line x1="100" y1="24" x2="100" y2="148" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4,4" opacity="0.4"/>
+        <line x1="62" y1="68" x2="62" y2="148" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+        <line x1="138" y1="68" x2="138" y2="148" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+        <circle cx="100" cy="24" r="3" fill="#C9A84C"/>
+        <circle cx="24" cy="148" r="3" fill="#C9A84C"/>
+        <circle cx="176" cy="148" r="3" fill="#C9A84C"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ══ SERVICES ══ -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px">What We Do</div>
+      <h2 class="services-title">Our Services</h2>
+    </div>
+    <div class="rule"></div>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="6" width="36" height="36" rx="1" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="6" y1="18" x2="42" y2="18" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <line x1="6" y1="30" x2="42" y2="30" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <line x1="18" y1="6" x2="18" y2="42" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <line x1="30" y1="6" x2="30" y2="42" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <circle cx="24" cy="24" r="4" fill="#C9A84C" opacity="0.7"/>
+      </svg>
+      <div class="service-title">Commercial Cleaning</div>
+      <p class="service-body">Full-scale commercial facility maintenance. We operate on your schedule, around your operations, without disruption or compromise.</p>
+      <ul class="service-list">
+        <li>Office Buildings & Campuses</li>
+        <li>Retail & Mixed-Use</li>
+        <li>Medical Facilities</li>
+        <li>Industrial & Warehouse</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 8 36 Q 24 8 40 36" stroke="#2A9BA6" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <line x1="8" y1="36" x2="40" y2="36" stroke="#2A9BA6" stroke-width="1" opacity="0.4"/>
+        <circle cx="24" cy="8" r="2.5" fill="#2A9BA6"/>
+        <line x1="24" y1="8" x2="24" y2="36" stroke="#2A9BA6" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+      </svg>
+      <div class="service-title">Event Cleaning</div>
+      <p class="service-body">Before the curtain rises. After the crowd leaves. We execute rapid, thorough venue preparation and post-event restoration for Jacksonville's most demanding events.</p>
+      <ul class="service-list">
+        <li>Pre-Event Setup Cleaning</li>
+        <li>During-Event Maintenance</li>
+        <li>Post-Event Full Restoration</li>
+        <li>Stadium & Arena Turnarounds</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="28" height="28" stroke="#5B8DB8" stroke-width="1.5"/>
+        <rect x="16" y="16" width="16" height="16" stroke="#5B8DB8" stroke-width="1" opacity="0.5"/>
+        <line x1="10" y1="24" x2="16" y2="24" stroke="#5B8DB8" stroke-width="1" opacity="0.4"/>
+        <line x1="32" y1="24" x2="38" y2="24" stroke="#5B8DB8" stroke-width="1" opacity="0.4"/>
+        <line x1="24" y1="10" x2="24" y2="16" stroke="#5B8DB8" stroke-width="1" opacity="0.4"/>
+        <line x1="24" y1="32" x2="24" y2="38" stroke="#5B8DB8" stroke-width="1" opacity="0.4"/>
+      </svg>
+      <div class="service-title">Corporate Facilities</div>
+      <p class="service-body">Ongoing janitorial and facility maintenance programs for corporate environments that demand consistent, professional-grade care — every day, without exception.</p>
+      <ul class="service-list">
+        <li>Nightly Janitorial Programs</li>
+        <li>Day Porter Services</li>
+        <li>Executive Suite Detailing</li>
+        <li>Common Area Management</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="24,6 38,14 38,34 24,42 10,34 10,14" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+        <polygon points="24,14 32,18 32,30 24,34 16,30 16,18" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.4"/>
+        <circle cx="24" cy="24" r="3" fill="#C9A84C" opacity="0.7"/>
+      </svg>
+      <div class="service-title">Venue Cleaning</div>
+      <p class="service-body">Luxury hotels, convention centers, theaters, and performance venues — spaces where appearance is part of the experience. We maintain that experience.</p>
+      <ul class="service-list">
+        <li>Luxury Hotel Partnerships</li>
+        <li>Convention Centers</li>
+        <li>Performing Arts Venues</li>
+        <li>Premium Private Events</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="28" width="32" height="12" stroke="#C9A84C" stroke-width="1.5"/>
+        <rect x="14" y="16" width="20" height="12" stroke="#C9A84C" stroke-width="1.5"/>
+        <rect x="20" y="8" width="8" height="8" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      </svg>
+      <div class="service-title">Post-Construction</div>
+      <p class="service-body">Final clean for new builds, renovations, and tenant improvements. We handle the detail work that transforms a construction site into a presentation-ready space.</p>
+      <ul class="service-list">
+        <li>New Construction Final Clean</li>
+        <li>Renovation Debris Removal</li>
+        <li>Tenant Improvement Ready</li>
+        <li>Commercial Handover Prep</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="16" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="8" stroke="#C9A84C" stroke-width="1" opacity="0.45"/>
+        <line x1="8" y1="24" x2="16" y2="24" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <line x1="32" y1="24" x2="40" y2="24" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <line x1="24" y1="8" x2="24" y2="16" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <line x1="24" y1="32" x2="24" y2="40" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+        <circle cx="24" cy="24" r="2.5" fill="#C9A84C"/>
+      </svg>
+      <div class="service-title">Specialty Cleaning</div>
+      <p class="service-body">Deep cleaning, pressure washing, floor restoration, window cleaning, and specialized surface treatments for high-value commercial environments.</p>
+      <ul class="service-list">
+        <li>Floor Stripping & Refinishing</li>
+        <li>Pressure & Soft Washing</li>
+        <li>Window & Glass Treatment</li>
+        <li>Emergency Response Cleaning</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="process">
+  <div class="process-header">
+    <div class="eyebrow">How It Works</div>
+    <h2>From Contact to Contract — Seamlessly</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-dot">01</div>
+      <div class="step-title">Site Walkthrough</div>
+      <p class="step-body">We visit your facility to understand scope, access requirements, and your operational standards. No assumptions. No generic quotes.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">02</div>
+      <div class="step-title">Custom Proposal</div>
+      <p class="step-body">Receive a detailed, transparent proposal tailored to your space, timeline, and service expectations. No boilerplate. No surprises.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">03</div>
+      <div class="step-title">Onboarding</div>
+      <p class="step-body">Dedicated account manager. Team introduction. Protocol review. We align with your team before day one so operations are seamless from the start.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">04</div>
+      <div class="step-title">Ongoing Excellence</div>
+      <p class="step-body">Regular quality inspections, reporting, and a direct line to your account manager. We maintain the standard — every visit, every time.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ══ WHY US ══ -->
+<section class="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="eyebrow">The Difference</div>
+      <h2>Built for environments that can't afford ordinary.</h2>
+      <p>We're not competing with the cleaning company on the corner. We're built for the facilities managers, venue directors, and event coordinators who understand that their space is a direct reflection of their brand. If your standard is high — ours matches it.</p>
+      <a href="#contact" class="btn-primary">Schedule a Walkthrough</a>
+    </div>
+    <div class="why-right">
+      <div class="why-grid">
+        <div class="why-card">
+          <svg class="why-card-icon" viewBox="0 0 36 36" fill="none">
+            <rect x="4" y="4" width="28" height="28" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M 10 20 L 16 26 L 26 12" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="why-card-title">Vetted & Insured</div>
+          <p class="why-card-body">Every team member background-checked. Fully bonded and insured for commercial operations.</p>
+        </div>
+        <div class="why-card">
+          <svg class="why-card-icon" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="14" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="18" y1="8" x2="18" y2="18" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18" y1="18" x2="26" y2="22" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div class="why-card-title">24/7 Response</div>
+          <p class="why-card-body">Emergency cleaning and rapid deployment available around the clock for urgent situations.</p>
+        </div>
+        <div class="why-card">
+          <svg class="why-card-icon" viewBox="0 0 36 36" fill="none">
+            <path d="M 6 24 Q 18 6 30 24" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="30" y2="24" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <circle cx="18" cy="6" r="2.5" fill="#C9A84C"/>
+          </svg>
+          <div class="why-card-title">Jacksonville-Rooted</div>
+          <p class="why-card-body">Local team. Local knowledge. Community investment. We're building this city alongside you.</p>
+        </div>
+        <div class="why-card">
+          <svg class="why-card-icon" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="10" width="24" height="18" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="6" y1="16" x2="30" y2="16" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <line x1="14" y1="16" x2="14" y2="28" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <circle cx="10" cy="13" r="1.5" fill="#C9A84C" opacity="0.6"/>
+          </svg>
+          <div class="why-card-title">Detailed Reporting</div>
+          <p class="why-card-body">Digital inspection reports after every service. Full transparency, full accountability, every visit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIAL ══ -->
+<section class="testimonial">
+  <div class="testimonial-mark">"</div>
+  <blockquote class="testimonial-quote">Seven Bridges raised our facility standard in the first week. Their team operates with a level of professionalism I haven't seen from any cleaning company in fifteen years of venue management.</blockquote>
+  <div class="testimonial-rule"></div>
+  <div class="testimonial-attr">Director of Operations &nbsp;·&nbsp; Event Venue &nbsp;·&nbsp; Jacksonville, FL</div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ══ DIVISIONS ══ -->
+<section class="divisions" id="divisions">
+  <div class="divisions-inner">
+    <div class="divisions-header">
+      <div class="eyebrow">Our Divisions</div>
+      <h2>Specialized for Your Scale</h2>
+    </div>
+    <div class="div-grid">
+
+      <div class="div-card event">
+        <div class="div-accent"></div>
+        <div class="div-label">Event Division</div>
+        <h3 class="div-title">Event Services</h3>
+        <p class="div-body">Built for the tempo and pressure of live events. Our Event Services division mobilizes rapidly, executes precisely, and restores venues to pristine condition on the tightest timelines in the industry.</p>
+        <ul class="div-services">
+          <li><span class="div-dot"></span>Stadium & Arena Cleanouts</li>
+          <li><span class="div-dot"></span>Concert & Festival Venues</li>
+          <li><span class="div-dot"></span>Gala & Corporate Event Restoration</li>
+          <li><span class="div-dot"></span>Convention Center Turnarounds</li>
+          <li><span class="div-dot"></span>Sporting Event Operations</li>
+        </ul>
+        <a href="#contact" class="div-cta">Book Event Crew</a>
+      </div>
+
+      <div class="div-card corp">
+        <div class="div-accent"></div>
+        <div class="div-label">Corporate Division</div>
+        <h3 class="div-title">Corporate Facilities</h3>
+        <p class="div-body">Long-term janitorial and facilities maintenance partnerships with corporate campuses, professional offices, and commercial buildings that demand consistency, discretion, and results.</p>
+        <ul class="div-services">
+          <li><span class="div-dot"></span>Law Firms & Financial Services</li>
+          <li><span class="div-dot"></span>Tech Campuses & Office Parks</li>
+          <li><span class="div-dot"></span>Medical Professional Buildings</li>
+          <li><span class="div-dot"></span>Government & Municipal Facilities</li>
+          <li><span class="div-dot"></span>Multi-Tenant Commercial Buildings</li>
+        </ul>
+        <a href="#contact" class="div-cta">Request a Proposal</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA / CONTACT ══ -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="eyebrow cta-eyebrow">Get Started</div>
+    <h2 class="cta-headline">Ready to <em>elevate</em><br>your standard?</h2>
+    <p class="cta-sub">Tell us about your facility. We'll respond within one business day with a tailored approach — no templates, no boilerplate.</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Your Name">
+      <input type="text" class="cta-input" placeholder="Company / Organization">
+      <input type="email" class="cta-input" placeholder="Email Address">
+      <input type="tel" class="cta-input" placeholder="Phone Number">
+      <select class="cta-select cta-input">
+        <option value="" disabled selected>Service Type</option>
+        <option>Commercial Cleaning</option>
+        <option>Event Cleaning</option>
+        <option>Corporate Facilities</option>
+        <option>Venue Cleaning</option>
+        <option>Post-Construction</option>
+        <option>Multiple / Not Sure</option>
+      </select>
+      <input type="text" class="cta-input" placeholder="Approximate Sq. Footage">
+      <button type="button" class="cta-submit">Request a Quote →</button>
+    </div>
+    <p class="cta-note">We respond within 1 business day &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; Jacksonville & surrounding areas</p>
+    <p class="cta-note" style="margin-top:12px;color:var(--silver)">
+      <a href="tel:+19045148071" style="color:var(--gold);text-decoration:none">(904) 514-8071</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:sevenbridgescleaning@gmail.com" style="color:var(--gold);text-decoration:none">sevenbridgescleaning@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">
+        <div class="nav-arch">
+          <svg viewBox="0 0 200 200" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 24 148 Q 100 24 176 148" fill="none" stroke="#C9A84C" stroke-width="5" stroke-linecap="round"/>
+            <line x1="24" y1="148" x2="176" y2="148" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="100" cy="24" r="4" fill="#C9A84C"/>
+          </svg>
+        </div>
+        <div class="nav-wordmark" style="font-size:15px">
+          <span>Seven Bridges</span> Cleaning Co.
+          <small>Jacksonville, Florida · Est. 2024</small>
+        </div>
+      </a>
+      <p>Jacksonville's premier commercial cleaning company — built for venues, corporations, and events that demand the highest standard.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Commercial Cleaning</a></li>
+        <li><a href="#">Event Cleaning</a></li>
+        <li><a href="#">Corporate Facilities</a></li>
+        <li><a href="#">Venue Cleaning</a></li>
+        <li><a href="#">Post-Construction</a></li>
+        <li><a href="#">Specialty Cleaning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Jacksonville, FL</a></li>
+        <li><a href="tel:+19045148071">(904) 514-8071</a></li>
+        <li><a href="mailto:sevenbridgescleaning@gmail.com">sevenbridgescleaning@gmail.com</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">© 2024 Seven Bridges Cleaning Co. · All Rights Reserved · Jacksonville, Florida</div>
+    <div class="footer-tagline">The Space, Perfected.</div>
+    <div class="footer-legal">Licensed · Bonded · Insured</div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.nav-cta')?.addEventListener('click',function(e){
+  e.preventDefault();
+  document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'});
+});
+document.querySelector('.cta-submit')?.addEventListener('click',function(){
+  const form=this.closest('.cta-form');
+  const inputs=[...form.querySelectorAll('input,select')];
+  const name=inputs[0].value.trim();
+  if(!name){inputs[0].focus();return;}
+  const company=inputs[1].value.trim();
+  const email=inputs[2].value.trim();
+  const phone=inputs[3].value.trim();
+  const service=inputs[4].value;
+  const sqft=inputs[5].value.trim();
+  const subject=encodeURIComponent('Quote Request — '+(company||name));
+  const body=encodeURIComponent(
+    'New quote request from the website:\n\n'+
+    'Name: '+name+'\n'+
+    'Company / Organization: '+company+'\n'+
+    'Email: '+email+'\n'+
+    'Phone: '+phone+'\n'+
+    'Service Type: '+service+'\n'+
+    'Approx. Sq. Footage: '+sqft+'\n'
+  );
+  window.location.href='mailto:sevenbridgescleaning@gmail.com?subject='+subject+'&body='+body;
+  this.textContent='Opening your email — send to complete your request.';
+  this.style.background='#1B6B72';
+  inputs.forEach(i=>{i.disabled=true;i.style.opacity='0.5';});
+});
+document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const href=this.getAttribute('href');
+    if(href.startsWith('#')){
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+</script>
+</body>
+</html>
